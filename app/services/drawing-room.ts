@@ -28,6 +28,19 @@ export const createDrawingRoom = async (
 };
 
 /**
+ * Fetch All Drawing Rooms Service
+ * This function will be used for fetching all the drawing rooms.
+ */
+export const fetchAllDrawingRooms = async () => {
+  const { data } = await supabase
+    .from(DRAWING_ROOM_TABLE)
+    .select()
+    .order("created_at", { ascending: false });
+
+  return data;
+};
+
+/**
  * Fetch User Drawing Rooms Service
  * This function will be used for fetching all the drawing rooms belonging to a user.
  * It'll only accept a userId and returns all the drawing rooms whose owner matches the userId.

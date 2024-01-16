@@ -1,6 +1,6 @@
 "use client";
 
-import { fetchUserDrawingRooms } from "@/app/services/drawing-room";
+import { fetchAllDrawingRooms } from "@/app/services/drawing-room";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Header from "./Header";
@@ -42,7 +42,9 @@ const DashboardBody = (props: Props) => {
   const shouldShowRoom = !loading && hasAtLeastOneRoom;
 
   const loadUserDrawingRooms = async () => {
-    return fetchUserDrawingRooms(session?.user?.id).then((res) => {
+    // return fetchUserDrawingRooms(session?.user?.id).then((res) => {setRooms(res)});
+
+    return fetchAllDrawingRooms().then((res) => {
       setRooms(res);
     });
   };
